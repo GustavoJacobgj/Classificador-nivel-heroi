@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hero level classifier</title>
+
+    <style>
+        body {
+            font-family: 'Franklin Gothic Medium', sans-serif;
+            background-color: #e6e6e6;
+            color: #0b5db4;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #0b5db4;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #0b5db4;
+        }
+
+        input {
+            padding: 10px;
+            margin-bottom: 15px;
+            width: 70%;
+            text-align: center;
+            box-sizing: border-box;
+            border: 1px solid #000000;
+        }
+
+        button {
+            width: 30%;
+            padding: 15px;
+            background-color: #070253;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #030033;
+        }
+
+        #resultado {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #be520af6;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>hero level classifier</h1>
+
+    <label for="heroName">Hero's Name:</label>
+    <input type="text" id="heroName" placeholder="Enter the hero's name" required>
+
+    <label for="heroXP">Hero XP:</label>
+    <input type="number" id="heroXP" placeholder="Enter the hero's XP" required>
+
+    <button onclick="classificarHeroi()">Sort Hero</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function classificarHeroi() {
+            let nomeDoHeroi = document.getElementById('heroName').value
+            let xpDoHeroi = parseFloat(document.getElementById('heroXP').value)
+
+            let nivelDoHeroi
+
+            switch (true) {
+                case xpDoHeroi < 1000:
+                    nivelDoHeroi = "Iron"
+                    break
+                case xpDoHeroi >= 1001 && xpDoHeroi <= 2000:
+                    nivelDoHeroi = "Bronze"
+                    break
+                case xpDoHeroi >= 2001 && xpDoHeroi <= 5000:
+                    nivelDoHeroi = "Silver"
+                    break
+                case xpDoHeroi >= 6001 && xpDoHeroi <= 7000:
+                    nivelDoHeroi = "Gold"
+                    break
+                case xpDoHeroi >= 7001 && xpDoHeroi <= 8000:
+                    nivelDoHeroi = "Platinum"
+                    break
+                case xpDoHeroi >= 8001 && xpDoHeroi <= 9000:
+                    nivelDoHeroi = "Ascending"
+                    break
+                case xpDoHeroi >= 9001 && xpDoHeroi <= 10000:
+                    nivelDoHeroi = "Immortal"
+                    break
+                default:
+                    nivelDoHeroi = "Radiant"
+            }
+
+            let resultadoElement = document.getElementById('resultado')
+            resultadoElement.innerHTML = "The hero " + nomeDoHeroi + " is at " + nivelDoHeroi + " level!"
+        }
+    </script>
+
+</body>
+</html>
